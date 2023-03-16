@@ -33,18 +33,56 @@
             android:textSize="24sp"
             app:layout_constraintStart_toEndOf="@id/character_image"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/character_age"
+            app:layout_constraintBottom_toTopOf="@id/sub_group"
             tools:text="Rick"/>
         <TextView
-            android:id="@+id/character_age"
+            android:id="@+id/sub_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="49"
             android:textSize="24sp"
             app:layout_constraintTop_toBottomOf="@id/character_name"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/linearL"
             app:layout_constraintStart_toStartOf="@id/character_name"/>
 
+        <LinearLayout
+            android:id="@+id/linearL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/sub_group"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+
+        <TextView
+            android:id="@+id/buttonCall"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:backgroundTint="#0F228E"
+            android:text="@string/Sets"
+            tools:ignore="ButtonStyle" />
+        <EditText
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:ems="3"
+            android:id="@+id/setsInput"/>
+
+        <TextView
+            android:id="@+id/buttonFaceTime"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:backgroundTint="#156319"
+            android:text="@string/repetition" />
+        <EditText
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:ems="3"
+            android:id="@+id/repetitionInput"
+            />
+
+    </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

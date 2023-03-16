@@ -7,10 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.kroger.classdemoapp.Character
-import com.kroger.classdemoapp.CharacterAdapter
+import com.kroger.classdemoapp.Exercise
+import com.kroger.classdemoapp.ExerciseAdapter
 import com.kroger.classdemoapp.R
-import kotlin.random.Random
 
 class CharacterListFragment : Fragment() {
 
@@ -25,47 +24,40 @@ class CharacterListFragment : Fragment() {
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        val characters = mutableListOf<Character>()
+        val exerciseItem = mutableListOf<Exercise>()
 
-        val genders = mutableListOf("Male", "Female", "Pickle", "Squanch", "01010")
-        val characterLocations = mutableListOf(
-            "Earth",
-            "Citadel of Ricks",
-            "Interdimensional Cable",
-            "Random Dimension"
+        val exerciseName = mutableListOf("Bench press", "Inclined press", "Cable Flies",
+            "Reverse Flies", "Shoulder press", "Lateral Raises" , "Side Raises")
+        val exerciseList = mutableListOf("Back", "Triceps", "Biceps", "Shoulders", "Chest", "Legs")
+        val imageList = mutableListOf("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrzdT3vEdbycdW-2BVI1ioqXnHKSmp8bvLhAX03esXApnq0U7txnf8fQCZkXrmCNUFnNs&usqp=CAU",
+            "https://static.strengthlevel.com/images/illustrations/shoulder-press-1000x1000.jpg",
+            "https://s3.amazonaws.com/prod.skimble/assets/1727358/image_iphone.jpg",
+            "https://www.bodybuildingmealplan.com/wp-content/uploads/Dumbbell-Fly-Muscles-Worked-Image-scaled.jpg",
+            "https://static.strengthlevel.com/images/illustrations/dumbbell-tricep-extension-1000x1000.jpg",
+            "https://cdn.shopify.com/s/files/1/1497/9682/articles/1_5b3195aa-428f-4a61-a3d0-a0eeef1e0f8d.jpg?v=1653395154"
         )
-        val nameMods = mutableListOf("Pickle", "", "Smart", "Fused", "Big Arm")
-        val characterNames = mutableListOf("Rick", "Morty", "Summer", "Jerry", "Beth")
 
         for (i in 0..30) {
-            characters.add(
-                createCharacter(
-                    "${nameMods.random()} ${characterNames.random()}".trimStart(),
-                    characterLocations.random(),
-                    genders.random(),
-                    i
+            exerciseItem.add(
+                createExerciseItem(
+                    exerciseName.random(),
+                    exerciseList.random(),
+                    imageList.random()
                 )
             )
         }
 
-        val adapter = CharacterAdapter(characters)
+        val adapter = ExerciseAdapter(exerciseItem)
         recyclerView.adapter = adapter
 
         return view
     }
 
-    private fun createCharacter(
-        name: String,
-        location: String,
-        gender: String,
-        id: Int
-    ) = Character(
+    private fun createExerciseItem(
+        name: String, subGroup:String ,image: String
+    ) = Exercise(
         name = name,
-        age = Random.nextInt(10, 99),
-        image = "https://rickandmortyapi.com/api/character/avatar/291.jpeg",
-        gender = gender,
-        universe = location,
-        id = id,
-        relation = listOf()
+        subGroup = subGroup,
+        image = image,
     )
 }
